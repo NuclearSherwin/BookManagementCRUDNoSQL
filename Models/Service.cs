@@ -72,5 +72,19 @@ namespace BookManagement.Models
             _serializer.Serialize(stream, Books);
         }
 
+        //public string GetDataPath(string file) => $"Data\\{file}";
+        //public void Upload(Book book, IFormFile file)
+        //{
+        //    if (file != null)
+        //    {
+        //        var path = GetDataPath(file.FileName);
+        //        using var stream = new FileStream(path, FileMode.Create);
+        //        file.CopyTo(stream);
+        //        book.DataFile = file.FileName;
+        //    }
+        //}
+
+
+
     }
 }

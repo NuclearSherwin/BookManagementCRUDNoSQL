@@ -9,7 +9,7 @@
   </Book>
   <Book>
     <Id>2</Id>
-    <Name>Pro ASP.NET Core</Name>
+    <Name>ASP.NET Core</Name>
     <Authors>Putin V.</Authors>
     <Publisher>Moscow</Publisher>
     <Year>2020</Year>
@@ -18,14 +18,22 @@
     <Id>3</Id>
     <Name>ASP.NET Core Video course</Name>
     <Authors>Obama B.</Authors>
-    <Publisher>Washington</Publisher>
+    <Publisher>Washington DC</Publisher>
     <Year>2020</Year>
   </Book>
   <Book>
     <Id>4</Id>
-    <Name>Lập trình ASP.NET Core MVC</Name>
+    <Name>History of the earth</Name>
     <Authors>Clinton B.</Authors>
     <Publisher>Washington</Publisher>
     <Year>2020</Year>
+  </Book>
+  <Book>
+    <Id>5</Id>
+    <Name>Cosmic</Name>
+    <Authors>Paika</Authors>
+    <Publisher>Sherwin, Phong</Publisher>
+    <Year>2022</Year>
+    <Description>This book will improve your thinking about universe to another level</Description>
   </Book>
 </ArrayOfBook>

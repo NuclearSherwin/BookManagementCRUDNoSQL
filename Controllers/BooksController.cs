@@ -49,6 +49,7 @@ namespace BookMan.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
+                _service.Upload(book, file);
                 _service.Update(book);
                 _service.SaveChanges();
                 return RedirectToAction(nameof(Index));
@@ -65,6 +66,7 @@ namespace BookMan.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
+                _service.Upload(book, file);
                 _service.Add(book);
                 _service.SaveChanges();
                 return RedirectToAction(nameof(Index));
