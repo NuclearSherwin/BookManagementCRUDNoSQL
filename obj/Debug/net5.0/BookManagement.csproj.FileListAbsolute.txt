@@ -120,3 +120,4 @@ E:\c#-projects\asp-dotnet\BookManagement\BookManagement\obj\Debug\net5.0\Razor\V
 E:\c#-projects\asp-dotnet\BookManagement\BookManagement\obj\Debug\net5.0\Razor\Views\Book\Create.cshtml.g.cs
 E:\c#-projects\asp-dotnet\BookManagement\BookManagement\obj\Debug\net5.0\Razor\Views\Book\_Form.cshtml.g.cs
 E:\c#-projects\asp-dotnet\BookManagement\BookManagement\obj\Debug\net5.0\Razor\Views\Book\_Single.cshtml.g.cs
+E:\c#-projects\asp-dotnet\BookManagement\BookManagement\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll

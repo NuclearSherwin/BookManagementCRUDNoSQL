@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Xml.Serialization;
 
 namespace BookManagement.Models
@@ -126,11 +127,11 @@ namespace BookManagement.Models
             return null;
         }
 
-        public (Book[] books, int pages, int page) Paging(int page)
+        public (Book[] books, int pages, int page) Paging(int page, string orderBy = "Name", bool dsc = false)
         {
             int size = 5;
             int pages = (int)Math.Ceiling((double)Books.Count / size);
-            var books = Books.Skip((page - 1) * size).Take(size).ToArray();
+            var books = Books.Skip((page - 1) * size).Take(size).AsQueryable().OrderBy($"{orderBy} {(dsc ? "descending" : "")}").ToArray();
             return (books, pages, page);
         }
 

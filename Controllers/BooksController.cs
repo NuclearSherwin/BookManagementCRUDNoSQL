@@ -13,11 +13,16 @@ namespace BookMan.Mvc.Controllers
 
         //=================INDEX===============================
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int page = 1, string orderBy = "Name", bool dsc = false)
         {
-            var model = _service.Paging(page);
+            var model = _service.Paging(page, orderBy, dsc);
             ViewData["Pages"] = model.pages;
             ViewData["Page"] = model.page;
+            ViewData["Name"] = false;
+            ViewData["Authors"] = false;
+            ViewData["Publisher"] = false;
+            ViewData["Year"] = false;
+            ViewData[orderBy] = !dsc;
             return View(model.books);
         }
 
@@ -105,8 +110,6 @@ namespace BookMan.Mvc.Controllers
         //=====================SEARCH==========================
         public IActionResult Search(string stringText)
         {
-
-
             return View(nameof(Index), _service.Get(stringText));
         }
 
