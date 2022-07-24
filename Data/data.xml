@@ -36,4 +36,12 @@
     <Year>2022</Year>
     <Description>This book will improve your thinking about universe to another level</Description>
   </Book>
+  <Book>
+    <Id>6</Id>
+    <Name>Example</Name>
+    <Authors>Paika</Authors>
+    <Publisher>Paika</Publisher>
+    <Year>2022</Year>
+    <DataFile>Link code.pdf</DataFile>
+  </Book>
 </ArrayOfBook>

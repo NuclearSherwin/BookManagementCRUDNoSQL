@@ -24,7 +24,7 @@ namespace BookManagement.Models
         public string Description { get; set; }
 
         [DisplayName("File")]
-        public string DateFile { get; set; }
+        public string DataFile { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -72,18 +73,66 @@ namespace BookManagement.Models
             _serializer.Serialize(stream, Books);
         }
 
-        //public string GetDataPath(string file) => $"Data\\{file}";
-        //public void Upload(Book book, IFormFile file)
-        //{
-        //    if (file != null)
-        //    {
-        //        var path = GetDataPath(file.FileName);
-        //        using var stream = new FileStream(path, FileMode.Create);
-        //        file.CopyTo(stream);
-        //        book.DataFile = file.FileName;
-        //    }
-        //}
+        public string GetDataPath(string file) => $"Data\\{file}";
 
+        public void Upload(Book book, IFormFile file)
+        {
+            if (file != null)
+            {
+                var path = GetDataPath(file.FileName);
+                using var stream = new FileStream(path, FileMode.Create, FileAccess.Write);
+                file.CopyTo(stream);
+                book.DataFile = file.FileName;
+            }
+        }
+
+        public (Stream, string) Download(Book b)
+        {
+            var memory = new MemoryStream();
+            using var stream = new FileStream(GetDataPath(b.DataFile), FileMode.Open);
+            stream.CopyTo(memory);
+            memory.Position = 0;
+            var type = Path.GetExtension(b.DataFile) switch
+            {
+                "pdf" => "application/pdf",
+                "docx" => "application/vnd.ms-word",
+                "doc" => "application/vnd.ms-word",
+                "txt" => "text/plain",
+                _ => "application/pdf"
+            };
+            return (memory, type);
+        }
+
+
+        // =====================SEARCH========================
+        public Book[] Get(string searchString)
+        {
+            //var s = searchString.ToLower();
+            //return Books.Where(b => b.Name.ToLower().Contains(s) ||
+            //                        b.Authors.ToLower().Contains(s) ||
+            //                        b.Publisher.ToLower().Contains(s) ||
+            //                        b.Description.ToLower().Contains(s) ||
+            //                        b.Year.ToString() == s).ToArray();
+
+
+            var search = searchString.ToLower();
+            if (!String.IsNullOrEmpty(search))
+            {
+                return Books.Where(b => b.Name.ToLower().Contains(search) ||
+                                        b.Authors.ToLower().Contains(search) ||
+                                        b.Publisher.ToLower().Contains(search) ||
+                                        b.Year.ToString() == search).ToArray();
+            }
+            return null;
+        }
+
+        public (Book[] books, int pages, int page) Paging(int page)
+        {
+            int size = 5;
+            int pages = (int)Math.Ceiling((double)Books.Count / size);
+            var books = Books.Skip((page - 1) * size).Take(size).ToArray();
+            return (books, pages, page);
+        }
 
 
     }
